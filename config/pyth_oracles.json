@@ -1,0 +1,21 @@
+{
+  "gold_usd": {
+    "feed_id": "ef0d8b6fda2ceba41da15d4095d1da392a0d2f8ed0c6c7bc0f4cfac8c280b56d",
+    "description": "XAU/USD (Gold price for backing)",
+    "decimals": 8
+  },
+  "teos_usd": {
+    "feed_id": "ff61491a931112ddf1bd8147cd1b641375f79f5825126d665480874634fd0ace",
+    "description": "$TEOS token price (core backing)",
+    "decimals": 6
+  },
+  "sol_usd": {
+    "feed_id": "h6ARHf6YXhGYeQfUzQNGk6rDNnLBQKrenN712K4AQJEG",
+    "description": "SOL/USD (for gas/network fees)",
+    "decimals": 6
+  },
+  "config": {
+    "update_threshold": 0.01,  // 1% deviation triggers
+    "confidence_threshold": 0.005  // Pyth confidence <0.5% invalidates
+  }
+}
