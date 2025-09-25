@@ -1,30 +1,21 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::Mint;
 
 #[account]
 pub struct AdvancedReserveVault {
-    pub authority: Pubkey,              // Multisig authority
-    pub ert_mint: Pubkey,               // $ERT mint
-    pub backing_mints: Vec<Pubkey>,     // $TEOS, gold proxy, etc.
-    pub collateral_ratio: u64,          // e.g., 150% over-collateralization (15000 = 150%)
-    pub current_peg: u64,               // Current $ERT value in USD (from oracle)
-    pub total_reserves: u64,            // Total backing value
-    pub last_audit_timestamp: i64,      // For AI audit triggers
-    pub zk_proof_hash: [u8; 32],        // Hash of zk-SNARK proof for private reserves
+    pub authority: Pubkey,      // Multisig
+    pub total_reserves: u64,    // In USD equiv (6 decimals)
+    pub current_peg: u64,       // e.g., 1_000_000 = $1.00
+    pub zk_proof_hash: [u8; 32], // ZK proof hash
+    pub ai_audit_hash: [u8; 32], // AI report hash
+    pub bump: u8,
 }
 
 #[account]
 pub struct MiningStake {
-    pub user: Pubkey,                   // Staker's pubkey
-    pub level: u8,                      // 1-5 referral levels
-    pub staked_amount: u64,             // $ERT or $TEOS staked
-    pub rewards_claimed: u64,           // Total rewards
-    pub referral_tree: Vec<Pubkey>,     // On-chain referral links (limited to 5 levels)
-}
-
-#[derive(AnchorSerialize, AnchorDeserialize, Clone)]
-pub struct OraclePrice {
-    pub price: u64,                     // Price in USD * 1e6 (Pyth format)
-    pub confidence: u64,                // Pyth confidence interval
-    pub timestamp: i64,
+    pub owner: Pubkey,
+    pub amount: u64,            // Staked $ERT
+    pub level: u8,              // 1-5
+    pub referral_tree: Vec<Pubkey>, // Max 5 deep
+    pub last_claim: i64,        // Timestamp
+    pub bump: u8,
 }
