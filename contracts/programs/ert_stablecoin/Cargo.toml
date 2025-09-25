@@ -1,0 +1,2 @@
+pyth-sdk-solana = "0.8.0"
+light-protocol = { version = "1.0", features = ["zk"] }
