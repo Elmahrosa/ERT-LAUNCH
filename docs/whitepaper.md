@@ -4,7 +4,7 @@
 $ERT is a USD-pegged stablecoin (1:1) on Solana, over-collateralized at 150% by $TEOS (core token), physical gold (via tokenized reserves), and RWAs (e.g., healthcare at Salma Unity Care Hospital, smart city projects). Total supply: 100B $ERT. Peg stability via Pyth oracles, ZK privacy (Light Protocol), AI audits (GPT-4), and 5-level mining rewards.
 
 ## Tokenomics
-- **Supply**: 1B fixed (no inflation post-launch).
+- **Supply**: 100B fixed (no inflation post-launch).
 - **Distribution**: 40% Reserves, 30% Mining Rewards, 20% Liquidity/DeFi, 10% Team/Governance (vested 2yrs).
 - **Backing**: 50% $TEOS, 30% Gold (XAU/USD via oracles), 20% RWAs (hospital services tokenized).
 - **Fees**: 0.1% mint/burn (to reserves); 0.5% transfer (DAO treasury).
