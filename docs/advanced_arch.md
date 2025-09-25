@@ -203,4 +203,4 @@ stateDiagram-v2
 - **Sustainability**: Carbon-neutral via offsets; community governance DAO.
 - **Metrics Goal**: 99.9% uptime, <0.5% peg deviation, 100k+ mining users.
 
-This architecture positions $ERT as a leader in culturally-rooted, tech-forward stablecoins. For contributions, open a PR with tests. Contact: ayman.seif@teosegypt.com. Last Updated: [Insert Date].
+This architecture positions $ERT as a leader in culturally-rooted, tech-forward stablecoins. For contributions, open a PR with tests. Contact: ayman.seif@teosegypt.com. Last Updated: [25 September 2025].
