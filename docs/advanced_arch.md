@@ -1,14 +1,3 @@
-### Full advanced_arch.md Content
-
-Below is the complete, expanded content for the `docs/advanced_arch.md` file. This is a production-ready Markdown document that provides a comprehensive overview of the ERT stablecoin architecture. It includes detailed explanations, multiple Mermaid diagrams for visualization, references to code files, and forward-looking sections. You can copy-paste this directly into your GitHub repository's `docs/` folder as `advanced_arch.md`. GitHub will render the Mermaid diagrams automatically.
-
-To enhance it further:
-- Add images (e.g., via GitHub uploads) for non-Mermaid visuals.
-- Link to external resources like Solana docs or Pyth network.
-- Update placeholders (e.g., program IDs) with your actual values.
-
----
-
 # Advanced ERT Stablecoin Architecture
 
 ## Overview
@@ -74,7 +63,7 @@ sequenceDiagram
     O->>U: Real-time USD values
     U->>C: Call advanced_mint_ert(amount, proof)
     Note over C: Verify zk, collateral, oracle confidence
-    C->>C: Mint $ERT via SPL CPI<br/>Adjust peg if >1% deviation
+    C->>C: Mint $ERT via SPL CPI\nAdjust peg if >1% deviation
     C->>B: Emit MintEvent (WS log)
     B->>B: AI audit (ai_auditor.js): Check anomaly?
     alt High Risk
@@ -93,18 +82,18 @@ Stake $ERT/$TEOS for rewards (1% base APY + 0.5% per level). Referrals build an 
 
 ```mermaid
 graph TD
-    A[User  Stakes $ERT via Bot/dApp] --> B[Create/Update MiningStake Account]
-    B --> C{Referral Code?}
-    C -->|Yes| D[Add to Referrer's Tree<br/>(Vec<Pubkey> in state.rs)]
-    C -->|No| E[Level 1 Stake]
-    D --> F[Upgrade Level (1-5)<br/>Bonus: 0.5% per level]
+    A["User  Stakes $ERT via Bot/dApp"] --> B["Create/Update MiningStake Account"]
+    B --> C{"Referral Code?"}
+    C -->|Yes| D["Add to Referrer's Tree\n(Vec<Pubkey> in state.rs)"]
+    C -->|No| E["Level 1 Stake"]
+    D --> F["Upgrade Level (1-5)\nBonus: 0.5% per level"]
     E --> F
-    F --> G[Accrue Rewards: Stake * (1% + Level Bonus)]
-    G --> H[User  Claims via /claim <level> in Bot]
-    H --> I[On-Chain: claim_mining_rewards<br/>Mint Rewards to User Token]
-    I --> J[Backend: Audit Claim Event<br/>Flag Abuse (e.g., >5 levels)]
-    J --> K[Notify Bot: "Rewards Claimed!"<br/>Referral Bonuses Distributed]
-    L[New Referral Joins] --> D
+    F --> G["Accrue Rewards:\nStake * (1% + Level Bonus)"]
+    G --> H["User  Claims via /claim <level> in Bot"]
+    H --> I["On-Chain: claim_mining_rewards\nMint Rewards to User Token"]
+    I --> J["Backend: Audit Claim Event\nFlag Abuse (e.g., >5 levels)"]
+    J --> K["Notify Bot: Rewards Claimed!\nReferral Bonuses Distributed"]
+    L["New Referral Joins"] --> D
 
     style A fill:#f9f
     style H fill:#ff9
@@ -122,23 +111,22 @@ Off-chain backend monitors events, uses AI for intelligent analysis (e.g., "Rese
 
 ```mermaid
 flowchart LR
-    A[Solana WS Logs (server.js)] --> B[Filter Events: Mint, Claim, Peg Update]
-    B --> C[Extract Data: Reserves, Prices, Signatures]
-    C --> D[OpenAI GPT-4 Prompt (ai_auditor.js)]
-    D --> E{Analyze: Anomaly? Risk Level?}
-    E -->|LOW/MED| F[Log Report: {risk, explanation, actions}]
-    E -->|HIGH| G[Auto-Actions: Trigger peg_adjust.js<br/>Alert Multisig via API/Email]
-    F --> H[Store Hash for On-Chain (update_reserves_with_ai_audit)]
+    A["Solana WS Logs\n(server.js)"] --> B["Filter Events:\nMint, Claim, Peg Update"]
+    B --> C["Extract Data:\nReserves, Prices, Signatures"]
+    C --> D["OpenAI GPT-4 Prompt\n(ai_auditor.js)"]
+    D --> E{"Analyze:\nAnomaly?\nRisk Level?"}
+    E -->|LOW/MED| F["Log Report:\n{risk, explanation, actions}"]
+    E -->|HIGH| G["Auto-Actions:\nTrigger peg_adjust.js\nAlert Multisig via API/Email"]
+    F --> H["Store Hash for On-Chain\n(update_reserves_with_ai_audit)"]
     G --> H
-    H --> I[API Response to Client/Bot<br/>(e.g., /audit/reserves endpoint)]
-    J[Manual Trigger (dApp)] --> D
+    H --> I["API Response to Client/Bot\n(e.g., /audit/reserves endpoint)"]
+    J["Manual Trigger (dApp)"] --> D
 
-    subgraph "AI Prompt Example"
-        P1[Check: Reserves <120%?]
-        P2[Verify: Oracle confidence >0.5%?]
-        P3[Suggest: "Burn 10% if deviation >2%"]
+    subgraph AI_Prompt ["AI Prompt Example"]
+        P1["Check:\nReserves <120%?"]
+        P2["Verify:\nOracle confidence >0.5%?"]
+        P3["Suggest:\nBurn 10% if deviation >2%"]
     end
-    D --> P1
 ```
 
 **AI Capabilities**:
@@ -151,20 +139,20 @@ Automated stability: Oracles feed prices → Deviation check → On-chain update
 
 ```mermaid
 stateDiagram-v2
-    [*] --> Stable: Peg = $1.00
-    Stable --> Deviation: |price - peg| >1%
-    Deviation --> CheckOracle: Fetch Pyth (gold/TEOS avg)
-    CheckOracle --> Sufficient: Collateral >=150%?
-    Sufficient --> Adjust: Update vault.current_peg
-    Adjust --> Audit: Trigger AI (high deviation?)
+    [*] --> Stable : "Peg = $1.00"
+    Stable --> Deviation : "Deviation >1%"
+    Deviation --> CheckOracle : "Fetch Pyth gold/TEOS avg"
+    CheckOracle --> Sufficient : "Collateral >=150%"
+    Sufficient --> Adjust : "Update vault.current_peg"
+    Adjust --> Audit : "Trigger AI high deviation"
     Audit --> Stable
-    Sufficient --> Insufficient: Collateral <150%
-    Insufficient --> Alert: Governance Intervention
-    Alert --> ManualBurn: Burn excess $ERT
+    Sufficient --> Insufficient : "Collateral <150%"
+    Insufficient --> Alert : "Governance Intervention"
+    Alert --> ManualBurn : "Burn excess $ERT"
     ManualBurn --> Stable
-    CheckOracle --> Stale: Timestamp >5min?
-    Stale --> Halt: Pause Mints (Error: InvalidOracle)
-    Halt --> Manual: Admin Update
+    CheckOracle --> Stale : "Timestamp >5min"
+    Stale --> Halt : "Pause Mints - InvalidOracle Error"
+    Halt --> Manual : "Admin Update"
 ```
 
 **Automation**: `scripts/peg_adjust.js` (cron every 15min; calls `update_reserves_with_ai_audit` with price hash).
