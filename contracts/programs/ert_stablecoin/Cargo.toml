@@ -1,2 +1,23 @@
-pyth-sdk-solana = "0.8.0"
-light-protocol = { version = "1.0", features = ["zk"] }
+[package]
+name = "ert_stablecoin"
+version = "0.1.0"
+description = "Ultra high-tech ERT stablecoin on Solana"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "ert_stablecoin"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.29.0"
+anchor-spl = "0.29.0"
+pyth-sdk-solana = "0.8.0"  # For oracles
+light-protocol = "1.0"  # ZK stubs (mock for now)
+solana-program = "1.18.0"
