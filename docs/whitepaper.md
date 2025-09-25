@@ -1,7 +1,7 @@
 # ERT Whitepaper: Ultra High-Tech Stablecoin for Egypt's Digital Pharaohs
 
 ## Abstract
-$ERT is a USD-pegged stablecoin (1:1) on Solana, over-collateralized at 150% by $TEOS (core token), physical gold (via tokenized reserves), and RWAs (e.g., healthcare at Salma Unity Care Hospital, smart city projects). Total supply: 1B $ERT. Peg stability via Pyth oracles, ZK privacy (Light Protocol), AI audits (GPT-4), and 5-level mining rewards.
+$ERT is a USD-pegged stablecoin (1:1) on Solana, over-collateralized at 150% by $TEOS (core token), physical gold (via tokenized reserves), and RWAs (e.g., healthcare at Salma Unity Care Hospital, smart city projects). Total supply: 100B $ERT. Peg stability via Pyth oracles, ZK privacy (Light Protocol), AI audits (GPT-4), and 5-level mining rewards.
 
 ## Tokenomics
 - **Supply**: 1B fixed (no inflation post-launch).
