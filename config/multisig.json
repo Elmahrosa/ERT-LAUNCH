@@ -1,0 +1,16 @@
+{
+  "multisig_address": "YourMultisigPubkeyHere",
+  "threshold": 3,
+  "signers": [
+    "Signer1Pubkey",
+    "Signer2Pubkey",
+    "Signer3Pubkey",
+    "Signer4Pubkey",
+    "Signer5Pubkey"
+  ],
+  "config": {
+    "time_lock": 3600,  // 1 hour delay for proposals
+    "description": "ERT Governance Multisig: Controls vault authority, peg adjustments"
+  },
+  "setup_script": "solana program deploy --multisig YourMultisigPubkeyHere"
+}
