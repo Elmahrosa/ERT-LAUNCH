@@ -15,8 +15,8 @@ Welcome to the first presale of **ERT**—Egypt’s Ritual Token. This is not ju
 
 ## 🛠️ Presale Mechanics
 
-- **Total Supply**: 3,000,000,000 ERT
-- **Presale Allocation**: 300,000,000 ERT (10%)
+- **Total Supply**:100,000,000,000,000 ERT
+- **Presale Allocation**:500,000,000 ERT 
 - **Accepted Tokens**: SOL, USDT
 - **Presale Price**: 1 ERT = 0.00001 SOL
 - **Min Contribution**: 0.1 SOL
