@@ -73,12 +73,11 @@ This presale is a ritual. Every SOL you send is a vote for Egypt’s digital sov
 
 ## 🔗 Links
 
-- [Whitepaper](#)
-- [Contributor Guide](#)
-- [GitHub](https://github.com/Elmahrosa/ERT-LAUNCH)
-- [Telegram](#)
-- [WhatsApp](#)
-- [Elmahrosa Portal](#)
+- [Whitepaper](https://github.com/Elmahrosa/ERT-LAUNCH/blob/main/whitepaper.md)
+- [Contributor Guide](https://ert.eg/docs/contributor-guide.pdf)
+- [Telegram](https://t.me/Elmahrosapi)
+- [WhatsApp](https://whatsapp.com/channel/0029VbAUAJ8JuyAHR4bjxa3X)
+- [Elmahrosa Portal](https://teosegypt.token)
 
 ---
 
